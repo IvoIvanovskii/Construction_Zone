@@ -13,7 +13,7 @@ public class MappingRotation : MonoBehaviour
     public float dir = 1;
     void Start()
     {
-        rotationAxis.value = Vector3.zero;
+        
     }
 
     // Update is called once per frame
