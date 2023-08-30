@@ -27,10 +27,10 @@ public class ForkliftController : MonoBehaviour
                 // transform.localPosition = new Vector3(0, 0, transform.localPosition.z + movementSpeed * Time.deltaTime);
                
            }
-        } else if(device[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool Rpressed) && Rpressed)
+        } else if(device[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool Rpressed) && Rpressed)
            {
                 if(Rpressed){
-                transform.position -= transform.forward * -1 * Time.deltaTime * movementSpeed;
+                transform.position -= transform.forward * Time.deltaTime * movementSpeed;
                 }
            }
             transform.localRotation = Quaternion.Euler(0, wheelRotation,0);
