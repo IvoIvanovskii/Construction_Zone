@@ -6,51 +6,35 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ForkliftController : MonoBehaviour
 {
-    public ActionBasedController leftController;
-    public ActionBasedController rightController;
+    float wheelRotation;
+    float movementSpeed = 2;
+    public void UpdateWheelRotation(float val){
+        wheelRotation = (val - 0.5f) * 2f * 45;
+        
+    } 
 
+    private void FixedUpdate() {
+        var device = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, device);
 
-    public Transform offset;
-    public Transform steeringWheel;
-    public Transform steeringWheelChild;
-    public Transform maxSteerAngle;
-    
-
-    public WheelCollider FLwheel;
-    public WheelCollider FRwheel;
-    public WheelCollider BLwheel;
-    public WheelCollider BRwheel;
-
-    
-    public Transform BLwheelTransform;
-    public Transform BRwheelTransform;
-    public float accelerationForce;
-    public float breakForce;
-
-
-    private Transform target;
-    private Vector3 fromCector;
-    private bool steered;
-    private float angleBetween;
-
-    private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Player"){
-            target = other.transform;
-
-            offset.position = target.position;
-            offset.localPosition = new Vector3(offset.localPosition.x, 0, offset.localPosition.z);
-            Vector3 dir = offset.position - transform.position;
-            Quaternion rot = Quaternion.LookRotation(dir, transform.up);
-
-            steeringWheelChild.SetParent(null);
-            steeringWheel.rotation = rot;
-            steeringWheelChild.SetParent(steeringWheel);
-        }
-    }
-    
-    private void  OnTriggerStay(Collider other) {
-        if(other.tag == "Player"){
-            target = other.transform;
-        }
+        //Moving forwards
+        if (device[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool pressed) && pressed)
+        {
+           if(pressed){
+                // GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, wheelRotation,0));
+                transform.position += transform.forward * Time.deltaTime * movementSpeed;
+                // GetComponent<Rigidbody>().MovePosition( new Vector3(0, 0, transform.localPosition.z + movementSpeed * Time.deltaTime));
+                // transform.localPosition = new Vector3(0, 0, transform.localPosition.z + movementSpeed * Time.deltaTime);
+               
+           }
+        } else if(device[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool Rpressed) && Rpressed)
+           {
+                if(Rpressed){
+                transform.position -= transform.forward * -1 * Time.deltaTime * movementSpeed;
+                }
+           }
+            transform.localRotation = Quaternion.Euler(0, wheelRotation,0);
+        
+        
     }
 }
