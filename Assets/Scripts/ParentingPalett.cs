@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ParentingPalett : MonoBehaviour
 {
-    private Transform highlight;
+    public GameObject highlight;
    
 
     Transform pos;
@@ -18,7 +18,7 @@ public class ParentingPalett : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Palett")  ){
-            this.GetComponent<Outline>().enabled = false;
+            highlight.GetComponent<Outline>().enabled = false;
             isOnLift = true;
         }
     }
@@ -33,7 +33,8 @@ public class ParentingPalett : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.CompareTag("Palett")){
             isOnLift = false;
-            this.GetComponent<Outline>().enabled = true;
+            highlight.GetComponent<Outline>().enabled = false;
+           
         }
     }
 
