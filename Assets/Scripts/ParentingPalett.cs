@@ -33,7 +33,7 @@ public class ParentingPalett : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.CompareTag("Palett")){
             isOnLift = false;
-            highlight.GetComponent<Outline>().enabled = false;
+            highlight.GetComponent<Outline>().enabled = false; 
            
         }
     }

@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class ForkliftController : MonoBehaviour
 {
+  
     float wheelRotation;
     float movementSpeed = 2;
     public void UpdateWheelRotation(float val){
         wheelRotation = (val - 0.5f) * 2f * 45;
         
     } 
+
+    
+
+
 
     private void FixedUpdate() {
         var device = new List<UnityEngine.XR.InputDevice>();
@@ -20,6 +24,7 @@ public class ForkliftController : MonoBehaviour
         //Moving forwards
         if (device[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool pressed) && pressed)
         {
+            Debug.LogError("A key pressed");
            if(pressed){
                 // GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, wheelRotation,0));
                 transform.position += transform.forward * Time.deltaTime * movementSpeed;
@@ -39,5 +44,13 @@ public class ForkliftController : MonoBehaviour
             
         
         
+    }
+    private void OnTriggerStay(Collider other) {
+        if(other.tag == "Door"){
+            if(other.GetComponent<AutomaticDoor>().Moving == false){
+                
+                other.GetComponent<AutomaticDoor>().Moving = true;
+            }
+        }
     }
 }
