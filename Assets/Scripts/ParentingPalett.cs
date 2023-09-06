@@ -8,7 +8,6 @@ public class ParentingPalett : MonoBehaviour
     public GameObject highlight;
    
 
-    Transform pos;
     public bool isOnLift = false;
     public GameObject Pallet;
     
