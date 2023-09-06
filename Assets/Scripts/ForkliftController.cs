@@ -28,17 +28,18 @@ public class ForkliftController : MonoBehaviour
            if(pressed){
                 // GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, wheelRotation,0));
                 transform.position += transform.forward * Time.deltaTime * movementSpeed;
-                transform.localRotation = Quaternion.Euler(0, wheelRotation,0); 
+                transform.localRotation = Quaternion.Euler(0, wheelRotation*1.5f, 0); 
                 // GetComponent<Rigidbody>().MovePosition( new Vector3(0, 0, transform.localPosition.z + movementSpeed * Time.deltaTime));
                 // transform.localPosition = new Vector3(0, 0, transform.localPosition.z + movementSpeed * Time.deltaTime);
            }
+           // moving back
         } else if(device[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool Rpressed) && Rpressed)
            {
              Debug.LogError("B key pressed");
                 if(Rpressed){
                     
-                    transform.position -= transform.forward * Time.deltaTime * movementSpeed;
-                    transform.localRotation = Quaternion.Euler(0, wheelRotation,0);
+                    transform.position += transform.forward * -1f * Time.deltaTime * movementSpeed;
+                    transform.localRotation = Quaternion.Euler(0, wheelRotation*1.5f, 0);
                 }
            }
             

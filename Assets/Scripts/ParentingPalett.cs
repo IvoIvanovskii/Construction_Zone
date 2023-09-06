@@ -10,7 +10,7 @@ public class ParentingPalett : MonoBehaviour
 
     Transform pos;
     public bool isOnLift = false;
-    public GameObject Palett;
+    public GameObject Pallet;
     
     
       
@@ -20,19 +20,35 @@ public class ParentingPalett : MonoBehaviour
         if(other.gameObject.CompareTag("Palett")  ){
             highlight.GetComponent<Outline>().enabled = false;
             isOnLift = true;
+            //parenting to trailer
+            if(other.gameObject.CompareTag("Loader") ){
+                Pallet.transform.parent = null;
+
+                Pallet.transform.SetParent(this.transform);
+
+                //putting pallet to exact possition;
+                Vector3 newPosition = Pallet.transform.position;
+                 newPosition.y = 2.06f; 
+                Pallet.transform.position = newPosition;
+
+            
+
+                isOnLift = false;
+            }
         }
     }
      private void OnTriggerStay(Collider other) {
          if(transform.position.y >= 0.85f && isOnLift ){
 
-                 Palett.transform.SetParent(this.transform);
+                 Pallet.transform.SetParent(this.transform);
                 //  Palett.transform.localPosition = Vector3.zero;
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.gameObject.CompareTag("Palett")){
+        if(other.gameObject.CompareTag("Palett") ){
             isOnLift = false;
+            Pallet.transform.parent = null;
             highlight.GetComponent<Outline>().enabled = false; 
            
         }
