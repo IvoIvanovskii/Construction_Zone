@@ -6,9 +6,9 @@ using UnityEngine.EventSystems;
 public class ParentingPalett : MonoBehaviour
 {
     public GameObject highlight;
-   
-
+    
     public bool isOnLift = false;
+    
     public GameObject Pallet;
     
     
@@ -19,21 +19,8 @@ public class ParentingPalett : MonoBehaviour
         if(other.gameObject.CompareTag("Palett")  ){
             highlight.GetComponent<Outline>().enabled = false;
             isOnLift = true;
-            //parenting to trailer
-            if(other.gameObject.CompareTag("Loader") ){
-                Pallet.transform.parent = null;
-
-                Pallet.transform.SetParent(this.transform);
-
-                //putting pallet to exact possition;
-                Vector3 newPosition = Pallet.transform.position;
-                 newPosition.y = 2.06f; 
-                Pallet.transform.position = newPosition;
-
             
-
-                isOnLift = false;
-            }
+           
         }
     }
      private void OnTriggerStay(Collider other) {

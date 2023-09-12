@@ -12,6 +12,8 @@ public class Loader : MonoBehaviour
         if(other.CompareTag("Palett") && other.CompareTag("Lift")){
             Pallet.transform.parent = null;
 
+            Pallet.transform.SetParent(this.transform);
+
             isLoaded = true;
 
             
@@ -20,8 +22,7 @@ public class Loader : MonoBehaviour
 
    private void OnTriggerStay(Collider other) {
     if(isLoaded){
-         Pallet.transform.SetParent(this.transform);
-
+         
             Vector3 pos = Pallet.transform.position;
 
             pos = new Vector3(pos.x, 2.35f, pos.z );
