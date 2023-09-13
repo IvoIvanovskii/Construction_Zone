@@ -311,10 +311,10 @@
                 {
                     "name": "",
                     "id": "d0b25780-44ac-45ee-b0f5-63fbe61b4f05",
-                    "path": "<XRSimulatedController>{LeftHand}/menuButton",
+                    "path": "<XRController>{LeftHand}/menu",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Generic XR Controller",
                     "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
