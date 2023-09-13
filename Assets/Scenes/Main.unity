@@ -3964,7 +3964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2066435107}
-  - component: {fileID: 2066435106}
+  - component: {fileID: 2066435108}
   m_Layer: 0
   m_Name: GameMenu
   m_TagString: Untagged
@@ -3972,34 +3972,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2066435106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066435105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c04bb7b7774bb8b478674b3943ee91c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  head: {fileID: 2083105606}
-  spawnDistance: 2
-  menu: {fileID: 605798222}
-  showButton:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Show Button
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: ccf367a2-b35c-4234-a05e-4d3fc380b3c0
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: -4578166591999483669, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
 --- !u!4 &2066435107
 Transform:
   m_ObjectHideFlags: 0
@@ -4016,6 +3988,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2066435108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066435105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5bccbc9dac72645ae5b9b2a00b6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 1913914016}
+  spawnDistance: 2
+  menu: {fileID: 605798222}
+  showButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Show Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 17b73918-07e3-4fc9-b38b-7776e3b8e9e9
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4578166591999483669, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
 --- !u!1 &2083105604
 GameObject:
   m_ObjectHideFlags: 0
@@ -23578,7 +23578,7 @@ Transform:
   - {fileID: 8659188618473847043}
   - {fileID: 2136176362}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &8542036705728292965
 MeshFilter:
@@ -24525,7 +24525,7 @@ Transform:
   m_Children:
   - {fileID: 394520895}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 70, z: 0}
 --- !u!65 &8884737596168831020
 BoxCollider:
