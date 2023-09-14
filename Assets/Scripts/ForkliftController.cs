@@ -74,6 +74,7 @@ public class ForkliftController : MonoBehaviour
 
     public void OnButtonPressed()
     {
+         float waitSeconds = sfxStart.length;
         buttonPressed = true;
         
         source.Stop();
@@ -81,12 +82,15 @@ public class ForkliftController : MonoBehaviour
     source.clip = sfxStart;
     source.Play();
 
-    // Check if the idle sound is not already playing, and if not, start playing it in a loop
-    if (source.isPlaying && source.clip != sfxIdle)
+    
+    while (waitSeconds >= 0)
     {
+        waitSeconds--;
+        if(waitSeconds <= 0 ){
         source.clip = sfxIdle;
         source.loop = true; 
         source.Play();
+        }
     }
         
     }
