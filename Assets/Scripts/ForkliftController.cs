@@ -5,20 +5,25 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ForkliftController : MonoBehaviour
 {
-    public AudioClip clip;
+    public AudioClip sfxStart,sfxIdle,sfxOff;
+
     private AudioSource source;
   
     float wheelRotation;
     float movementSpeed = 2;
 
     bool buttonPressed = false;
+    public bool loopSfxIdle = true;
     public void UpdateWheelRotation(float val){
         wheelRotation = (val - 0.5f) * 2f * 45;
         
     } 
 
-    private void Start (){
+     void Start()
+    {
         source = GetComponent<AudioSource>();
+        
+        
     }
 
 
@@ -28,6 +33,10 @@ public class ForkliftController : MonoBehaviour
         UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, device);
 
         if(buttonPressed){
+            Debug.LogError("START ENGINE");
+           
+              
+            
         //Moving forwards
             if (device[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool pressed) && pressed)
             {
@@ -50,8 +59,9 @@ public class ForkliftController : MonoBehaviour
                     }
                  }
             
+            
         
-        }
+        } 
     }
     private void OnTriggerStay(Collider other) {
         if(other.tag == "Door"){
@@ -64,7 +74,30 @@ public class ForkliftController : MonoBehaviour
 
     public void OnButtonPressed()
     {
-        buttonPressed = !buttonPressed;
+        buttonPressed = true;
+        
+        source.Stop();
+
+    source.clip = sfxStart;
+    source.Play();
+
+    // Check if the idle sound is not already playing, and if not, start playing it in a loop
+    if (source.isPlaying && source.clip != sfxIdle)
+    {
+        source.clip = sfxIdle;
+        source.loop = true; 
+        source.Play();
+    }
+        
+    }
+     public void OnButtonRelease()
+    {
+        buttonPressed = false;
+        
+          source.loop = false;
+            source.clip = sfxOff;
+            source.Play();
+        
     }
     
 
