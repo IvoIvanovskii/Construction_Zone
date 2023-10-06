@@ -27,5 +27,6 @@ public class Panel : MonoBehaviour
   {
     canvas.enabled = false;
   }
+  
 }
 

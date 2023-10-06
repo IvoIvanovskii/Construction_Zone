@@ -47,7 +47,7 @@ public class MenuManager : MonoBehaviour
 
       int lastIndex = panelHistory.Count - 1;
       SetCurrent(panelHistory[lastIndex]);
-      panelHistory.RemoveAt(lastIndex);
+      panelHistory.RemoveAt (lastIndex);
   }
 
   public void SetCurrentWithHistory(Panel newPanel)
