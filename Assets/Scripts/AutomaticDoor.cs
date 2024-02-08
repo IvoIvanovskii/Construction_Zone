@@ -23,6 +23,7 @@ public class AutomaticDoor : MonoBehaviour
     private void Update() {
         if(moving) {
             if(oppening) {
+            
                 MoveDoor(endPos);
             }
             else{
